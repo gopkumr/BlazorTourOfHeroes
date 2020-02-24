@@ -1,0 +1,47 @@
+﻿@page "/hero"
+
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+    @foreach (Hero hero in heroesList)
+    {
+    <li><span class="badge">@hero.Id</span> @hero.Name</li>
+    }
+</ul>
+
+<h2>@hero.Name.ToUpper() Details</h2>
+<div><span>id: </span>@hero.Id</div>
+<div>
+    <label>
+        name:
+        <input type="text" @bind-value="hero.Name" @bind-value:event="oninput" placeholder="name" />
+    </label>
+</div>
+
+@code {
+
+    //[class.selected]="hero === selectedHero"
+    //(click)="onSelect(hero)">
+
+
+    Hero hero = new Hero
+    {
+        Id = 1,
+        Name = "Windstorm"
+    };
+
+    public class Hero
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    List<Hero> heroesList = new List<Hero>()
+{
+        new Hero(){ Id=1, Name="Test1"},
+        new Hero(){ Id=2, Name="Test2"},
+        new Hero(){ Id=3, Name="Test3"},
+        new Hero(){ Id=4, Name="Test4"},
+        new Hero(){ Id=5, Name="Test5"}
+    };
+}
