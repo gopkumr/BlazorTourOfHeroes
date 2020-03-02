@@ -7,6 +7,8 @@ namespace TourofHeroes
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<MessageService, MessageService>();
+            services.AddScoped<HeroService, HeroService>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)

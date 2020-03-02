@@ -1,0 +1,26 @@
+﻿@page "/HeroDetails"
+
+@if (DetailedHero != null)
+{
+    <div>
+        <h2>@DetailedHero.Name.ToUpper() Details</h2>
+        <div><span>id: </span>@DetailedHero.Id</div>
+        <div>
+            <label>
+                name:
+                <input @bind-value="@DetailedHero.Name" placeholder="name" />
+            </label>
+        </div>
+
+    </div>
+}
+
+@code {
+
+    [Parameter]
+    public Hero DetailedHero
+    {
+        get;
+        set;
+    }
+}
