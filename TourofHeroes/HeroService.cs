@@ -11,7 +11,7 @@ namespace TourofHeroes
 
         public HeroService(MessageService _messageService)
         {
-            this.messageService = _messageService;
+            messageService = _messageService;
         }
 
         public List<Hero> GetHeroes()

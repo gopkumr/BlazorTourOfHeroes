@@ -39,7 +39,7 @@ button.clear {
 }
 </style>
 
-@if (messageService.Messages.Any())
+@if (messages!=null && messages.Any())
 {
     <div>
 
@@ -48,7 +48,7 @@ button.clear {
                 @onclick="@(e=>messageService.Clear())">
             clear
         </button>
-        @foreach (var message in messageService.Messages)
+        @foreach (var message in messages)
         {
          <div> @message </div>
         }
@@ -57,8 +57,11 @@ button.clear {
 }
 
 @code{
-     protected override async Task OnInitializedAsync()
+
+    private List<string> messages;
+
+    protected override async Task OnInitializedAsync()
     {
-        
+        messages = await Task.FromResult(messageService.Messages);
     }
 }
