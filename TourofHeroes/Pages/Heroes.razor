@@ -1,4 +1,4 @@
-﻿@page "/hero"
+﻿@page "/heroes"
 @inject HeroService heroService
 @inject MessageService messageService
 
@@ -57,13 +57,11 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
     @foreach (Hero hero in _heroesList)
-    {
-        <li @onclick="@(e=>HeroSelected(hero.Id))"><span class="badge">@hero.Id</span> @hero.Name</li>
+    { <li>
+            <a href="/HeroDetails/@hero.Id"><span class="badge">@hero.Id</span> @hero.Name</a>
+      </li>
     }
 </ul>
-
-<HeroDetails DetailedHero="_selectedHero"/>
-
 
 @code {
 

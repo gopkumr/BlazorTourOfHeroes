@@ -16,7 +16,7 @@ namespace TourofHeroes
 
         public List<Hero> GetHeroes()
         {
-            messageService.Add("HeroService: fetched heroes");
+            //messageService.Add("HeroService: fetched heroes");
 
             return new List<Hero>()
                 {

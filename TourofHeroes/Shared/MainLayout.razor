@@ -1,15 +1,58 @@
 ﻿@inherits LayoutComponentBase
 
-@*<div class="sidebar">
-    <NavMenu />
-</div>*@
+    <style type="text/css">
+        /* AppComponent's private CSS styles */
+        h1 {
+            font-size: 1.2em;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        nav a {
+            padding: 5px 10px;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+            nav a:visited, a:link {
+                color: #334953;
+            }
+
+            nav a:hover {
+                color: #039be5;
+                background-color: #cfd8dc;
+            }
+
+            nav a.active {
+                color: #039be5;
+            }
+    </style>
+
+<h1>@Title</h1>
+
+<nav>
+    <NavLink class="nav-link" href="heroes" Match="NavLinkMatch.Prefix">
+        <span class="oi oi-home" aria-hidden="true"></span> Heroes
+    </NavLink>
+    <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+        <span class="oi oi-home" aria-hidden="true"></span> Dashboard
+    </NavLink>
+</nav>
 
 <div class="main">
-    @*<div class="top-row px-4">
-        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-    </div>*@
-
     <div class="content px-4">
         @Body
     </div>
 </div>
+
+@code{
+    private string Title = "Tour of Heroes";
+}

@@ -1,4 +1,6 @@
-﻿@page "/HeroDetails"
+﻿@page "/HeroDetails/{Id:int}"
+
+@inject HeroService heroService
 
 @if (DetailedHero != null)
 {
@@ -17,10 +19,25 @@
 
 @code {
 
-    [Parameter]
-    public Hero DetailedHero
+    private Hero DetailedHero
     {
         get;
         set;
     }
+
+     [Parameter]
+    public int Id
+    {
+        get;set;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id > 0)
+        {
+            var allHeros = await Task.FromResult(heroService.GetHeroes());
+            DetailedHero =  allHeros.FirstOrDefault(q => q.Id == Id);
+        }
+    }
 }
+
