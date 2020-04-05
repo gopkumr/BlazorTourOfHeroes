@@ -45,7 +45,7 @@ button.clear {
 
         <h2>Messages</h2>
         <button class="clear"
-                @onclick="@(e=>messageService.Clear())">
+                @onclick="messageService.Clear()">
             clear
         </button>
         @foreach (var message in messages)

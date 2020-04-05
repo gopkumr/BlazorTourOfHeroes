@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject HeroService heroService
+@using TourofHeroes.Pages
 
 <h3>Top Heroes</h3>
 <div class="grid grid-pad">
@@ -12,6 +13,8 @@
         </a>
     }
 </div>
+
+<HeroSearch />
 
 @code{
 

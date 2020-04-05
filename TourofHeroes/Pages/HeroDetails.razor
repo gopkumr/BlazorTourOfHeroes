@@ -1,4 +1,6 @@
 ﻿@page "/HeroDetails/{Id:int}"
+@using Microsoft.JSInterop;
+
 
 @inject HeroService heroService
 @inject IJSRuntime JSRuntime
@@ -9,13 +11,13 @@
         <div>
             <label>
                 name:
-                <input @bind-value="@DetailedHero.Name" placeholder="name" />
+                <input @bind-value="@DetailedHero.Name" @bind-value:event="oninput" placeholder="name" />
             </label>
         </div>
 
     </div>
 
-    <button @onclick="@(e=>GoBack())">go back</button>
+    <button @onclick="GoBack()">go back</button>
 
 @code {
 

@@ -1,0 +1,43 @@
+﻿@page "/HeroSearch"
+
+@inject HeroService heroService
+
+@using Microsoft.AspNetCore.Components.Web 
+
+    <div id="search-component">
+        <h4><label for="search-box">Hero Search</label></h4>
+
+        <input type="text" id="search-box" @bind-value="@HeroName" @bind-value:event="oninput" @onkeypress="KeyHandler" />
+
+        @if (searchResult != null)
+        {
+            <ul class="search-result">
+                @foreach (var hero in searchResult)
+                {
+                    <li>
+                        <a href="/HeroDetails/@hero.Id">
+                            @hero.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+
+@code {
+
+    private string HeroName
+    {
+        get;
+        set;
+    }
+
+    private List<Hero> searchResult { get; set; }
+
+    private void KeyHandler(KeyboardEventArgs e)
+    {
+        searchResult = heroService.SearchHeros(HeroName);
+
+    }
+}
+
