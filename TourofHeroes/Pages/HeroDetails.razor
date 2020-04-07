@@ -1,23 +1,26 @@
 ﻿@page "/HeroDetails/{Id:int}"
 @using Microsoft.JSInterop;
+@using Microsoft.AspNetCore.Components.Web;
 
 
 @inject HeroService heroService
 @inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
 
+<div>
+    <h2>@DetailedHero.Name.ToUpper() Details</h2>
+    <div><span>id: </span>@DetailedHero.Id</div>
     <div>
-        <h2>@DetailedHero.Name.ToUpper() Details</h2>
-        <div><span>id: </span>@DetailedHero.Id</div>
-        <div>
-            <label>
-                name:
-                <input @bind-value="@DetailedHero.Name" @bind-value:event="oninput" placeholder="name" />
-            </label>
-        </div>
-
+        <label>
+            name:
+            <input @bind-value="@DetailedHero.Name" @bind-value:event="oninput" placeholder="name" />
+        </label>
     </div>
 
-    <button @onclick="GoBack()">go back</button>
+</div>
+
+<button @onclick="@(e=>GoBack())">go back</button>
+<button @onclick="@(e=>Save())">save</button>
 
 @code {
 
@@ -44,6 +47,12 @@
     private void GoBack()
     {
         JSRuntime.InvokeVoidAsync("history.back");
+    }
+
+    private void Save()
+    {
+        heroService.UpdateHero(DetailedHero);
+        NavigationManager.NavigateTo("/");
     }
 }
 

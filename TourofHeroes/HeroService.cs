@@ -42,5 +42,22 @@ namespace TourofHeroes
             MasterListOfHeros.Add(newHero);
             return MasterListOfHeros;
         }
+
+        public List<Hero> RemoveHero(Hero hero)
+        {
+            //messageService.Add("HeroService: fetched heroes");
+
+            MasterListOfHeros.Remove(hero);
+            return MasterListOfHeros;
+        }
+
+        public List<Hero> UpdateHero(Hero hero)
+        {
+            //messageService.Add("HeroService: fetched heroes");
+
+            var index = MasterListOfHeros.FindIndex(q => q.Id == hero.Id);
+            MasterListOfHeros[index].Name = hero.Name;
+            return MasterListOfHeros;
+        }
     }
 }

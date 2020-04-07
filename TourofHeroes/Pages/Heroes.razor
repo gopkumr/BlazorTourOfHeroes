@@ -1,14 +1,30 @@
 ﻿@page "/heroes"
 @inject HeroService heroService
 @inject MessageService messageService
+@using Microsoft.AspNetCore.Components.Web
 
 <h2>My Heroes</h2>
+
+<div>
+    <label>
+        Hero name:
+        <input @bind-value="@_newHeroName" @bind-value:event="onchange" />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button @onclick="@(e => addNewHero())">
+        add
+    </button>
+</div>
+
 <ul class="heroes">
     @foreach (Hero hero in _heroesList)
     {
-        <li>
-            <a href="/HeroDetails/@hero.Id"><span class="badge">@hero.Id</span> @hero.Name</a>
-        </li>
+    <li>
+        <a href="/HeroDetails/@hero.Id"><span class="badge">@hero.Id</span> @hero.Name</a>
+        <button class="heros delete " title="delete hero" @onclick="@(e=>deleteHero(hero.Id))">
+            x
+        </button>
+    </li>
     }
 </ul>
 
@@ -16,6 +32,7 @@
 
     private Hero _selectedHero = null;
     private List<Hero> _heroesList = new List<Hero>();
+    private string _newHeroName;
 
     public void HeroSelected(int id)
     {
@@ -26,6 +43,19 @@
     protected override async Task OnInitializedAsync()
     {
         _heroesList = await Task.FromResult(heroService.GetHeroes());
+    }
+
+    private void addNewHero()
+    {
+        var maxHeroId = _heroesList.Max(q => q.Id);
+        var newHero = new Hero() { Id = maxHeroId + 1, Name = _newHeroName };
+        _heroesList=heroService.AddNewHero(newHero);
+    }
+
+    private void deleteHero(int Id)
+    {
+        var heroToDelete = _heroesList.FirstOrDefault(q => q.Id==Id);
+        _heroesList=heroService.RemoveHero(heroToDelete);
     }
 
 }
