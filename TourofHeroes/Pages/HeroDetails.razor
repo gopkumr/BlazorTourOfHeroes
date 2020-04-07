@@ -40,8 +40,7 @@
     {
         if (Id > 0)
         {
-            var allHeros = await Task.FromResult(heroService.GetHeroes());
-            DetailedHero = allHeros.FirstOrDefault(q => q.Id == Id);
+            DetailedHero = await Task.FromResult(heroService.GetHero(Id));
         }
     }
     private void GoBack()

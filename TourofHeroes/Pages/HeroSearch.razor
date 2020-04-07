@@ -7,7 +7,7 @@
     <div id="search-component">
         <h4><label for="search-box">Hero Search</label></h4>
 
-        <input type="text" id="search-box" @bind-value="@HeroName" @bind-value:event="oninput" @onkeypress="KeyHandler" />
+        <input type="text" id="search-box" @bind-value="@HeroName" @bind-value:event="oninput" @onkeyup="KeyHandler" />
 
         @if (searchResult != null)
         {

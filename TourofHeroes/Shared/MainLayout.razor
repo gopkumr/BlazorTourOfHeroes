@@ -1,6 +1,8 @@
 ﻿@inherits LayoutComponentBase
 @using TourofHeroes.Pages
-@using Microsoft.AspNetCore.Components.Routing 
+@using Microsoft.AspNetCore.Components.Routing
+
+@inject MessageService messageService
 
 <h1>@Title</h1>
 
@@ -17,7 +19,8 @@
     <div class="content px-4">
         @Body
 
-        <Messages />
+        <br />
+        <Messages @bind-LogMessages="messageService.Messages" />
     </div>
 </div>
 

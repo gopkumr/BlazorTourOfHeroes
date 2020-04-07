@@ -4,7 +4,12 @@ namespace TourofHeroes
 {
     public class MessageService
     {
-        public List<string> Messages { get; }
+        public MessageService()
+        {
+            Messages = new List<string>();
+        }
+
+        public List<string> Messages { get; set; }
 
         public void Add(string message)
         {

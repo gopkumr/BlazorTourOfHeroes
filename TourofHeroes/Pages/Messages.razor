@@ -1,17 +1,20 @@
 ﻿@page "/messages"
+
+@using Microsoft.AspNetCore.Components.Web; 
+
 @inject MessageService messageService
 
 
-@if (messages!=null && messages.Any())
+@if (LogMessages != null && LogMessages.Any())
 {
     <div>
 
         <h2 class="message">Messages</h2>
         <button class="clear message"
-                @onclick="messageService.Clear()">
+                @onclick="@(e=>messageService.Clear())">
             clear
         </button>
-        @foreach (var message in messages)
+        @foreach (var message in LogMessages)
         {
          <div> @message </div>
         }
@@ -21,10 +24,10 @@
 
 @code{
 
-    private List<string> messages;
+    [Parameter]
+    public List<string> LogMessages { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        messages = await Task.FromResult(messageService.Messages);
-    }
+    [Parameter]
+    public EventCallback<List<string>> LogMessagesChanged { get; set; }
+
 }

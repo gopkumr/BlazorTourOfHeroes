@@ -10,11 +10,16 @@ namespace TourofHeroes
         private readonly MessageService messageService;
         private List<Hero> MasterListOfHeros = new List<Hero>()
         {
-            new Hero() { Id = 1, Name = "Test1" },
-            new Hero() { Id = 2, Name = "Test2" },
-            new Hero() { Id = 3, Name = "Test3" },
-            new Hero() { Id = 4, Name = "Test4" },
-            new Hero() { Id = 5, Name = "Test5" }
+              new Hero() { Id= 11, Name="Dr Nice" },
+              new Hero() { Id= 12, Name="Narco" },
+              new Hero() { Id= 13, Name="Bombasto" },
+              new Hero() { Id= 14, Name="Celeritas" },
+              new Hero() { Id= 15, Name="Magneta" },
+              new Hero() { Id= 16, Name="RubberMan" },
+              new Hero() { Id= 17, Name="Dynama" },
+              new Hero() { Id= 18, Name="Dr IQ" },
+              new Hero() { Id= 19, Name="Magma" },
+              new Hero() { Id= 20, Name="Tornado" }
         };
 
         public HeroService(MessageService _messageService)
@@ -24,20 +29,28 @@ namespace TourofHeroes
 
         public List<Hero> GetHeroes()
         {
-            //messageService.Add("HeroService: fetched heroes");
+            this.Log("fetch heros");
             return MasterListOfHeros;
         }
 
         public List<Hero> SearchHeros(string searchTerm)
         {
             if (string.IsNullOrEmpty(searchTerm)) return new List<Hero>();
-            //messageService.Add("HeroService: fetched heroes");
+
+            Log("found hero maching "+searchTerm);
             return MasterListOfHeros.Where(q => q.Name.ToLower().StartsWith(searchTerm.ToLower())).ToList();
+        }
+
+        public Hero GetHero(int heroId)
+        {
+            Log("fetch hero id=" + heroId);
+            var hero = MasterListOfHeros.FirstOrDefault(q => q.Id == heroId);
+            return hero;
         }
 
         public List<Hero> AddNewHero(Hero newHero)
         {
-            //messageService.Add("HeroService: fetched heroes");
+            Log("add hero " + newHero.Id);
 
             MasterListOfHeros.Add(newHero);
             return MasterListOfHeros;
@@ -45,7 +58,7 @@ namespace TourofHeroes
 
         public List<Hero> RemoveHero(Hero hero)
         {
-            //messageService.Add("HeroService: fetched heroes");
+            Log("remove hero " + hero.Id);
 
             MasterListOfHeros.Remove(hero);
             return MasterListOfHeros;
@@ -53,11 +66,16 @@ namespace TourofHeroes
 
         public List<Hero> UpdateHero(Hero hero)
         {
-            //messageService.Add("HeroService: fetched heroes");
+            Log("update hero " + hero.Id);
 
             var index = MasterListOfHeros.FindIndex(q => q.Id == hero.Id);
             MasterListOfHeros[index].Name = hero.Name;
             return MasterListOfHeros;
+        }
+
+        private void Log(string message)
+        {
+            this.messageService.Add(string.Format("HeroService: {0}", message));
         }
     }
 }
