@@ -1,6 +1,6 @@
 ﻿@page "/"
-@inject HeroService heroService
-@using TourofHeroes.Pages
+
+@inherits DashboadBase
 
 <h3>Top Heroes</h3>
 <div class="grid grid-pad">
@@ -15,14 +15,3 @@
 </div>
 
 <HeroSearch />
-
-@code{
-
-    private List<Hero> topFive;
-
-    protected override async Task OnInitializedAsync()
-    {
-        var _heroesList = await Task.FromResult(heroService.GetHeroes());
-        topFive = _heroesList.OrderByDescending(q => q.Id).Take(4).ToList();
-    }
-}
