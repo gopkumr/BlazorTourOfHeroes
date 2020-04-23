@@ -47,7 +47,7 @@ namespace TourofHeroes
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/Index");
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }
