@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Blazor.Hosting;
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Net.Http;
 
 namespace TourofHeroes
 {
@@ -6,11 +9,19 @@ namespace TourofHeroes
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var builder = CreateHostBuilder(args);
+            builder.RootComponents.Add<App>("app");
+
+            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+            builder.Services.AddSingleton<MessageService>();
+            builder.Services.AddSingleton<HeroService>();
+
+            builder.Build().RunAsync();
         }
 
-        public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
-            BlazorWebAssemblyHost.CreateDefaultBuilder()
-                .UseBlazorStartup<Startup>();
+        public static WebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
+            WebAssemblyHostBuilder.CreateDefault(args);
+                
     }
 }
