@@ -36,8 +36,8 @@ jobs:
         # Set an external repository (owner/repo).
         external_repository: gopkumr/BlazorHost
         # Set Git user.name
-        user_name: gopakumr
-        user_email: gopakumr.r@live.com 
+        user_name: gopkumr
+        user_email: gopakumar.r@live.com 
         # Set a custom commit message with a triggered commit hash
         commit_message: Auto Deploy
         # Set a custom full commit message without a triggered commit hash
