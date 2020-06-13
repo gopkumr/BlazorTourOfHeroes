@@ -32,7 +32,7 @@ jobs:
         # Set a target branch for deployment.
         publish_branch: master
         # Set an input directory for deployment.
-        publish_dir: /home/runner/work/BlazorHost
+        publish_dir: /BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot
         # Set an external repository (owner/repo).
         external_repository: gopkumr/BlazorHost
         # Set Git user.name
