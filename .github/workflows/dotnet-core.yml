@@ -37,7 +37,7 @@ jobs:
         # Allow an empty commit to be created
         allow_empty_commit: true
         # Build directory to deploy
-        build_dir: BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot
+        build_dir: /BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot
         # The committer name and email address
         committer: DeployBot
         # The author name and email address
