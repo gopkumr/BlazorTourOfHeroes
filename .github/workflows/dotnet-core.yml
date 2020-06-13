@@ -25,22 +25,21 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
     - name: Publish
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
-    - name: GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v2.0.1
-      with:
-        # GitHub repository where assets will be deployed (default current)
-        repo: BlazorHost
-        # Git branch where assets will be deployed
-        target_branch: master
-        # Create incremental commit instead of doing push force
-        keep_history: false
-        # Allow an empty commit to be created
-        allow_empty_commit: true
-        # Build directory to deploy
-        build_dir: /
-        # The committer name and email address
-        committer: DeployBot
-        # The author name and email address
-        author: Gopakumar Gopakumar.r@live.com
-        # Commit message
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with: 
+        # Set a target branch for deployment.
+        publish_branch: master
+        # Set an input directory for deployment.
+        publish_dir: /home/runner/work/BlazorHost
+        # Set an external repository (owner/repo).
+        external_repository: gopkumr/BlazorHost
+        # Set Git user.name
+        user_name: gopakumr
+        # Set a custom commit message with a triggered commit hash
         commit_message: Auto Deploy
+        # Set a custom full commit message without a triggered commit hash
+        full_commit_message: This is a deployment from Github Actions
+        # An alias for enable_jekyll to disable adding .nojekyll file to master or gh-pages branches
+        disable_nojekyll: false
+        
