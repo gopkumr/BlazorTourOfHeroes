@@ -28,7 +28,7 @@ jobs:
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
       with: 
-        personal_token: 0e6e00a1bba4db20251dbe7c37cc13172d766f83 
+        personal_token: ebf903936d1b5771b53d05ca0c88f0db88ce7a99 
         # Set a target branch for deployment.
         publish_branch: master
         # Set an input directory for deployment.
