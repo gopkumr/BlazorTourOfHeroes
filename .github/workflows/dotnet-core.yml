@@ -1,0 +1,46 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+    - name: Publish
+      run: dotnet publish --configuration Release --no-restore
+    - name: GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v2.0.1
+      with:
+        # GitHub repository where assets will be deployed (default current)
+        repo: BlazorHost
+        # Git branch where assets will be deployed
+        target_branch: master
+        # Create incremental commit instead of doing push force
+        keep_history: false
+        # Allow an empty commit to be created
+        allow_empty_commit: true
+        # Build directory to deploy
+        build_dir: TourofHeroes/Bin/Release/netcoreapp3.1/publish/wwwroot
+        # The committer name and email address
+        committer: DeployBot
+        # The author name and email address
+        author: Gopakumar Gopakumar.r@live.com
+        # Commit message
+        commit_message: Auto Deploy
