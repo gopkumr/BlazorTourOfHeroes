@@ -28,8 +28,8 @@ jobs:
     - name: GitHub Pages action
       uses: drud/action-cross-commit@master
       with:
-       source-folder: /TourofHeroes/bin/Release/netstandard2.1/wwwroot
-       destination-repository: https://gopkumr:${{ secrets.user_token }}@github.com/gopkumr/BlazorHost
+       source-folder: TourofHeroes/bin/Release/netstandard2.1/wwwroot
+       destination-repository: https://gopkumr:${{ secrets.user_token }}@github.com/gopkumr/BlazorHost.git
        destination-folder: .
        destination-branch: master
        git-user: gopkumr 
