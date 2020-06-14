@@ -26,22 +26,12 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
     - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3.6.1
-      with: 
-        personal_token: ebf903936d1b5771b53d05ca0c88f0db88ce7a99 
-        # Set a target branch for deployment.
-        publish_branch: master
-        # Set an input directory for deployment.
-        publish_dir: /TourofHeroes/bin/Release/netstandard2.1/wwwroot
-        # Set an external repository (owner/repo).
-        external_repository: gopkumr/BlazorHost
-        # Set Git user.name
-        user_name: gopkumr
-        user_email: gopakumar.r@live.com 
-        # Set a custom commit message with a triggered commit hash
-        commit_message: Auto Deploy
-        # Set a custom full commit message without a triggered commit hash
-        full_commit_message: This is a deployment from Github Actions
-        # An alias for enable_jekyll to disable adding .nojekyll file to master or gh-pages branches
-        disable_nojekyll: false
+      uses: drud/action-cross-commit@master
+      with:
+       source-folder: /TourofHeroes/bin/Release/netstandard2.1/wwwroot
+       destination-repository: https://gopkumr:${{ secrets.user_token }}@github.com/gopkumr/BlazorHost
+       destination-folder: .
+       destination-branch: master
+       git-user: gopkumr 
+       git-user-email: gopakumar.r@live.com
         
