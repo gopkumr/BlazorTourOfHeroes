@@ -26,12 +26,18 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
     - name: GitHub Pages action
-      uses: drud/action-cross-commit@master
+      uses: awb-pw/deploy-to-github-pages-action@1.1.1
       with:
-       source-folder: TourofHeroes/bin/Release/netstandard2.1/wwwroot
-       destination-repository: https://gopkumr:${{ secrets.USER_TOKEN }}@github.com/gopkumr/BlazorHost
-       destination-folder: ./
-       destination-branch: master
-       git-user: gopkumr 
-       git-user-email: gopakumar.r@live.com
+        # Author
+        AUTHOR: Gopakumar
+        # Name of GitHub page repository
+        GITHUB_PAGE_NAME: BlazorHost
+        # GitHub Personal Access Token
+        PA_TOKEN: ebf903936d1b5771b53d05ca0c88f0db88ce7a99
+        # Name of build directory
+        BUILD_PATH: TourofHeroes/bin/Release/netstandard2.1/wwwroot
+        # Who to greet
+        USERNAME: gopkumr
+        # Who to greet
+        EMAIL: gopakumar.r@live.com
         
