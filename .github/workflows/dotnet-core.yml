@@ -25,20 +25,14 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
     - name: Publish
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
-    - name: GitHub Pages action
-      uses: crazy-max/ghaction-github-pages@v2.0.1
+    - name: Publish to GitHub Pages
+      uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
       with:
-        # GitHub repository where assets will be deployed (default current)
+        # The name of the directory that containing the content to be published
+        dir: /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot
+        # The name of the remote branch that publishing source for GitHub Pages site
+        branch: master
+        # The remote repository that publishing source for GitHub Pages site, defaults to current repo and is formatted like 'user/repo-name'
         repo: gopkumr/BlazorHost
-        # Git branch where assets will be deployed
-        target_branch: master
-        # Build directory to deploy
-        build_dir: TourofHeroes/bin/Release/netstandard2.1/publish
-        # The committer name and email address
-        committer: gopkumr <gopakumar.r@live.com>
-        # The author name and email address
-        author: Gopakumar <gopakumar.r@live.com>
-        # Commit message
-        commit_message: deployingpages
-      env:
-         GH_PAT: d5dbef34df77f3df58ac808583c22c06bfa7e203        
+        # The personal access token that authorize repo access
+        token: d5dbef34df77f3df58ac808583c22c06bfa7e203
