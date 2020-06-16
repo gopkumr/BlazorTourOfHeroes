@@ -40,3 +40,4 @@ jobs:
         author: Gopakumar gopakumar.r@live.com
         # Commit message
         commit_message: deployingpages
+        GH_PAT: ebf903936d1b5771b53d05ca0c88f0db88ce7a99  
