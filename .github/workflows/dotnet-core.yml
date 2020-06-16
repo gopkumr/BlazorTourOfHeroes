@@ -26,18 +26,13 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
     - name: GitHub Pages action
-      uses: awb-pw/deploy-to-github-pages-action@1.1.1
+      uses: cpina/github-action-push-to-another-repository@v1.1
       with:
-        # Author
-        AUTHOR: Gopakumar
-        # Name of GitHub page repository
-        GITHUB_PAGE_NAME: BlazorHost
-        # GitHub Personal Access Token
-        PA_TOKEN: ebf903936d1b5771b53d05ca0c88f0db88ce7a99
-        # Name of build directory
-        BUILD_PATH: TourofHeroes/bin/Release/netstandard2.1/wwwroot
-        # Who to greet
-        USERNAME: gopkumr
-        # Who to greet
-        EMAIL: gopakumar.r@live.com
-        
+          # Source directory from the origin directory
+          source-directory: TourofHeroes/bin/Release/netstandard2.1/wwwroot
+          # Name of the destination username/organization
+          destination-github-username: gopkumr
+          # Destination repository
+          destination-repository-name: ./
+          # Email for the git commit
+          user-email: gopakumar.r@live.com
