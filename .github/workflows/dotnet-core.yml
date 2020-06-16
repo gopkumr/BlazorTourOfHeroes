@@ -41,4 +41,4 @@ jobs:
         # Commit message
         commit_message: deployingpages
       env:
-         GH_PAT: gopkumr:d5dbef34df77f3df58ac808583c22c06bfa7e203        
+         GH_PAT: gopkumr:GithubIndia130$        
