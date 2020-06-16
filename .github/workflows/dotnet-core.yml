@@ -26,13 +26,17 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
     - name: GitHub Pages action
-      uses: cpina/github-action-push-to-another-repository@v1.1
+      uses: crazy-max/ghaction-github-pages@v2.0.1
       with:
-          # Source directory from the origin directory
-          source-directory: TourofHeroes/bin/Release/netstandard2.1/wwwroot
-          # Name of the destination username/organization
-          destination-github-username: gopkumr
-          # Destination repository
-          destination-repository-name: ./
-          # Email for the git commit
-          user-email: gopakumar.r@live.com
+        # GitHub repository where assets will be deployed (default current)
+        repo: BlazorHost
+        # Git branch where assets will be deployed
+        target_branch: master
+        # Build directory to deploy
+        build_dir: /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/publish/wwwroot
+        # The committer name and email address
+        committer: Gopakumar
+        # The author name and email address
+        author: Gopakumar gopakumar.r@live.com
+        # Commit message
+        commit_message: deployingpages
