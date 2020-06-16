@@ -33,6 +33,6 @@ jobs:
         # The name of the remote branch that publishing source for GitHub Pages site
         branch: master
         # The remote repository that publishing source for GitHub Pages site, defaults to current repo and is formatted like 'user/repo-name'
-        repo: BlazorHost
+        repo: gopkumr/BlazorHost
         # The personal access token that authorize repo access
-        token: gopkumr:d5dbef34df77f3df58ac808583c22c06bfa7e203
+        token: d5dbef34df77f3df58ac808583c22c06bfa7e203
