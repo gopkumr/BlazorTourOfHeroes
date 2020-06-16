@@ -29,7 +29,7 @@ jobs:
       uses: crazy-max/ghaction-github-pages@v2.0.1
       with:
         # GitHub repository where assets will be deployed (default current)
-        repo: BlazorHost
+        repo: gopkumr/BlazorHost
         # Git branch where assets will be deployed
         target_branch: master
         # Build directory to deploy
