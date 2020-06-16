@@ -35,7 +35,7 @@ jobs:
         # Build directory to deploy
         build_dir: TourofHeroes/bin/Release/netstandard2.1/publish
         # The committer name and email address
-        committer: Gopakumar
+        committer: gopkumr <gopakumar.r@live.com>
         # The author name and email address
         author: Gopakumar gopakumar.r@live.com
         # Commit message
