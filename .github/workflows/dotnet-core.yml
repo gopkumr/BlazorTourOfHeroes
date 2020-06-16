@@ -41,4 +41,4 @@ jobs:
         # Commit message
         commit_message: deployingpages
       env:
-         GH_PAT: ebf903936d1b5771b53d05ca0c88f0db88ce7a99        
+         GH_PAT: gopkumr:ebf903936d1b5771b53d05ca0c88f0db88ce7a99        
