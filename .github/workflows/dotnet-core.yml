@@ -33,7 +33,7 @@ jobs:
         # Git branch where assets will be deployed
         target_branch: master
         # Build directory to deploy
-        build_dir: /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/publish/wwwroot
+        build_dir: /TourofHeroes/bin/Release/netcoreapp3.1/publish/wwwroot
         # The committer name and email address
         committer: Gopakumar
         # The author name and email address
