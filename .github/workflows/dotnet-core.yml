@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+         persist-credentials: false
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -33,4 +35,4 @@ jobs:
         # The remote repository that publishing source for GitHub Pages site, defaults to current repo and is formatted like 'user/repo-name'
         repo: gopkumr/BlazorHost
         # The personal access token that authorize repo access
-        token: gopkumr:d5dbef34df77f3df58ac808583c22c06bfa7e203
+        token: d5dbef34df77f3df58ac808583c22c06bfa7e203
