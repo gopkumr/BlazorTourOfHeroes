@@ -33,4 +33,4 @@ jobs:
         # The remote repository that publishing source for GitHub Pages site, defaults to current repo and is formatted like 'user/repo-name'
         repo: gopkumr/BlazorHost
         # The personal access token that authorize repo access
-        token: gopkumr:GithubIndia130$
+        token: gopkumr:GitHubIndia130$
