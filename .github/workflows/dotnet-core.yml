@@ -36,3 +36,5 @@ jobs:
         repo: gopkumr/BlazorHost
         # The personal access token that authorize repo access
         token: d5dbef34df77f3df58ac808583c22c06bfa7e203
+        name: gopkumr
+        email: gopakumar.r@live.com
