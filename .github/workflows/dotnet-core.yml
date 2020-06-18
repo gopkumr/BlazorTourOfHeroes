@@ -26,15 +26,18 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
     - name: Publish to GitHub Pages
-      uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
       with:
-        # The name of the directory that containing the content to be published
-        dir: /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot
-        # The name of the remote branch that publishing source for GitHub Pages site
-        branch: master
-        # The remote repository that publishing source for GitHub Pages site, defaults to current repo and is formatted like 'user/repo-name'
-        repo: gopkumr/BlazorHost
-        # The personal access token that authorize repo access
-        token: ${{ secrets.ACCESS_TOKEN }}
-        name: gopkumr
-        email: gopakumar.r@live.com
+        run: |
+          git init
+          git remote add origin https://$REPO_KEY@github.com/gopkumr/BlazorHost.git
+          git fetch --prune
+          git checkout -b master origin/master
+          git rm -r --ignore-unmatch '*'
+          git add --all
+          git config user.name gopkumr
+          git config user.email gopakumar.r@live.com
+          git commit -m Publish '/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot' to 'master' in 'gopkumr/BlazorHost'
+          git config push.default current
+          git push origin
+      env:
+        REPO_KEY:${{ secrets.ACCESS_TOKEN }}
