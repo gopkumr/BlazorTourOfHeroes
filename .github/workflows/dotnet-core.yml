@@ -25,6 +25,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Publish
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
+    - uses: actions/checkout@v2
     - name: Publish to GitHub Pages
       run: |
           git init
