@@ -27,16 +27,15 @@ jobs:
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
     - name: Publish to GitHub Pages
       run: |
-          pwd
+          cd /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot
           git init
+          git add --all
+          git commit -m Publish '/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot' to 'master' in 'gopkumr/BlazorHost'
           git remote add origin https://$REPO_KEY@github.com/gopkumr/BlazorHost.git
           git fetch --prune
           git checkout -b master origin/master
-          git rm -r --ignore-unmatch '*'
-          git add --all
           git config user.name gopkumr
           git config user.email gopakumar.r@live.com
-          git commit -m Publish '/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot' to 'master' in 'gopkumr/BlazorHost'
           git config push.default current
           git push origin
       env:
