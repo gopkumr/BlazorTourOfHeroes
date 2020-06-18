@@ -27,6 +27,7 @@ jobs:
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
     - name: Publish to GitHub Pages
       run: |
+          pwd
           git init
           git remote add origin https://$REPO_KEY@github.com/gopkumr/BlazorHost.git
           git fetch --prune
