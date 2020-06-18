@@ -35,7 +35,7 @@ jobs:
           git config user.name gopkumr
           git config user.email gopakumar.r@live.com
           git fetch --prune
-          rm -rfv /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/topublish
+          git rm -r --ignore-unmatch '*'
           cp -avr /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/topublish
           git add --all
           git commit -m 'Adding new set of file'
