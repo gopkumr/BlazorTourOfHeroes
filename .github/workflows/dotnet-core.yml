@@ -27,15 +27,20 @@ jobs:
       run: dotnet publish --configuration Release --no-restore "/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/TourofHeroes.csproj"
     - name: Publish to GitHub Pages
       run: |
-          cd /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot
+          cd /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1
+          mkdir topublish
+          
+          cd /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/topublish
           git init
-          git add --all
-          git commit -m Publish '/home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot' to 'master' in 'gopkumr/BlazorHost'
           git remote add origin https://$REPO_KEY@github.com/gopkumr/BlazorHost.git
-          git fetch --prune
           git checkout -b master origin/master
           git config user.name gopkumr
           git config user.email gopakumar.r@live.com
+          git fetch --prune
+          rm -rfv /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/topublish
+          cp -avr /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/topublish
+          git add --all
+          git commit -m 'Adding new set of file'
           git config push.default current
           git push origin
       env:
