@@ -30,7 +30,7 @@ jobs:
           mkdir /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/topublish
           cd /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/topublish
           git init
-          git remote add origin https://${GITHUB_ACTOR}:$REPO_KEY@github.com/gopkumr/BlazorHost.git
+          git remote add origin https://$REPO_KEY@github.com/gopkumr/BlazorHost.git
           git checkout -b master
           git config user.name ${GITHUB_ACTOR}
           git config user.email ${GITHUB_ACTOR}@user.github.com
@@ -39,7 +39,6 @@ jobs:
           cp -avr /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/wwwroot /home/runner/work/BlazorTourOfHeroes/BlazorTourOfHeroes/TourofHeroes/bin/Release/netstandard2.1/topublish
           git add --all
           git commit -m 'Adding new set of file'
-          git config push.default current
           git push origin
       env:
         REPO_KEY: ${{ secrets.ACCESS_TOKEN }}
